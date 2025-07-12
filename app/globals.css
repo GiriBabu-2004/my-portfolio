@@ -24,3 +24,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Slim, dark-themed scrollbar */
+.terminal::-webkit-scrollbar {
+  width: 4px;         /* very thin vertical scrollbar */
+  height: 4px;        /* very thin horizontal scrollbar */
+  background: black;  /* scrollbar background black */
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background-color: #555; /* medium gray thumb */
+  border-radius: 9999px;  /* fully rounded */
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: black;  /* black track background */
+}
+
+/* Firefox */
+.terminal {
+  scrollbar-width: thin;
+  scrollbar-color: #555 black;
+}
+
+

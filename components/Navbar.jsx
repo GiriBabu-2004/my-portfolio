@@ -9,9 +9,9 @@ const Navbar = () => {
           Sujay Kumar Giri
         </div>
         <ShinyText 
-          text="Engineer" 
+          text="Full-Stack Developer & Engineer" 
           disabled={false} 
-          speed={1} 
+          speed={5} 
           className='text-gray-400 text-md'
         />
       </div>
