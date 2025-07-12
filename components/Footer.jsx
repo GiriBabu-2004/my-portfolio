@@ -35,7 +35,7 @@ const Footer = () => {
   return (
     <div className="w-full h-[60px] bg-slate-900 border-t border-cyan-500 flex items-center justify-between px-6">
       {/* Social Media Icons on Left */}
-      <div className="flex pl-8 space-x-6 text-cyan-400 text-xl">
+      <div className="flex space-x-6 text-cyan-400 text-xl">
         <a
           href="https://github.com/GiriBabu-2004"
           target="_blank"
