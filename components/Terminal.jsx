@@ -253,7 +253,7 @@ export default function Terminal() {
     const cmd = input.trim().toLowerCase();
     let newEntries = [...history, { type: "command", value: cmd }];
 
-    if (cmd === "clear") {
+    if (cmd === "clear" || cmd === "cls") {
       newEntries = [{ type: "prompt", value: initialPrompt }];
       setHistory(newEntries);
       setInput("");
