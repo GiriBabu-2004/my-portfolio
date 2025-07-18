@@ -11,9 +11,10 @@ const COMMANDS = {
  education - My educational background
  certifications - View my certifications
  contact - How to reach me
+ resume - Download my resume
  sudo - Activate god mode
- clear - Clear the terminal 
-
+ clear - Clear the terminal
+  
  Type any of these commands to continue...
  `,
   about: `Hello, I'm Sujay Kumar Giri !
@@ -141,6 +142,10 @@ Feel free to reach out anytime!
 
 🎉 You are now a god! Congratulations, supreme coder! 👑😼
 `,
+resume: `Downloading resume...
+If it doesn't download automatically or you want to see the resume in google drive, click here:
+https://drive.google.com/file/d/1dePe_wCNE-vjXpPpywFFmFyW2XW6GjNA/view?usp=sharing`,
+
 };
 
 // Regex to detect URLs (simple version)
@@ -259,6 +264,18 @@ export default function Terminal() {
       setInput("");
       return;
     }
+
+    if (cmd === "resume") {
+  
+  // 1. Trigger download of local resume in public folder
+  const localResumeUrl = "/MyCV-SujayKumarGiri.pdf"; // file in public folder
+  const link = document.createElement("a");
+  link.href = localResumeUrl;
+  link.setAttribute("download", "MyCV-SujayKumarGiri.pdf");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
     if (COMMANDS[cmd]) {
       newEntries.push({ type: "output", value: COMMANDS[cmd], displayedOutput: [], error: false });
