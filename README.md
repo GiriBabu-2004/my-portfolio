@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💼 Developer Portfolio - Built with Next.js + React
 
-## Getting Started
+A clean, modern, and terminal-inspired developer portfolio built using **Next.js**, **React**, **Tailwind CSS**, and **React Bits**. It features a unique **terminal UI** to explore personal information and an interactive **ID card**, designed for both desktop and mobile screens.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧰 Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Next.js** – Framework for server-side rendering and routing
+- **React** – UI Library
+- **Tailwind CSS** – Utility-first CSS for styling
+- **React Icons** – For including modern and responsive icons
+- **React Bits** – Reusable UI components
+- **Responsive Design** – Fully optimized for mobile and desktop screens
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📦 Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🖥️ **Terminal Interface**: Type commands like `about`, `skills`, or `projects` to explore.
+- 🪪 **Interactive ID Card**: Showcasing your identity as a developer.
+- 🌐 **Responsive Design**: Fully adaptable to all devices.
+- 💡 **Custom Styling**: Styled with Tailwind CSS for a clean and modern look.
+- 🔧 **Modular Code**: Easy to customize and expand.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🖼️ Project Images
 
-## Deploy on Vercel
+### 💻 Desktop View
+<img width="1908" height="1004" alt="Screenshot 2025-07-12 231609" src="https://github.com/user-attachments/assets/9e1934d9-4191-4abf-9792-523bd4803f7b" />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📱 Mobile View
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<img width="322" height="696" alt="Screenshot 2025-07-12 231628" src="https://github.com/user-attachments/assets/56c32e2c-835a-4984-b90c-67cfc5fdf745" />
+
+
+
