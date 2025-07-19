@@ -142,10 +142,6 @@ Feel free to reach out anytime!
 
 🎉 You are now a god! Congratulations, supreme coder! 👑😼
 `,
-resume: `Downloading resume...
-If it doesn't download automatically or you want to see the resume in google drive, click here:
-https://drive.google.com/file/d/1dePe_wCNE-vjXpPpywFFmFyW2XW6GjNA/view?usp=sharing`,
-
 };
 
 // Regex to detect URLs (simple version)
@@ -172,15 +168,32 @@ function parseTextWithLinks(text) {
 }
 const initialPrompt = (
   <>
-    <span style={{ color: "#f729f7" }}>Welcome!</span> I'm Sujay Kumar Giri, a full-stack
-    developer.
+    <span style={{ color: "#f729f7" }}>Welcome!</span> I'm Sujay Kumar Giri, a
+    full-stack developer.
     <br />
-    Type '<span style={{ color: "#41f62b" }}>help</span>' to see available commands.
+    Type '<span style={{ color: "#41f62b" }}>help</span>' to see available
+    commands.
   </>
 );
 
+function UnicodeSpinner() {
+  const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
+  const [i, setI] = React.useState(0);
+
+  React.useEffect(() => {
+    const id = setInterval(() => {
+      setI((prev) => (prev + 1) % frames.length);
+    }, 80); // speed
+    return () => clearInterval(id);
+  }, []);
+
+  return <span style={{ color: "white" }}>{frames[i]}</span>;
+}
+
 export default function Terminal() {
-  const [history, setHistory] = useState([{ type: "prompt", value: initialPrompt }]);
+  const [history, setHistory] = useState([
+    { type: "prompt", value: initialPrompt },
+  ]);
   const [input, setInput] = useState("");
   const inputRef = useRef();
   const terminalRef = useRef();
@@ -227,7 +240,10 @@ export default function Terminal() {
 
           if (lastPart && lastPart.type === "text") {
             // update last text part
-            displayedParts[displayedParts.length - 1] = { type: "text", value: textSoFar };
+            displayedParts[displayedParts.length - 1] = {
+              type: "text",
+              value: textSoFar,
+            };
           } else {
             // add new text part
             displayedParts.push({ type: "text", value: textSoFar });
@@ -266,19 +282,45 @@ export default function Terminal() {
     }
 
     if (cmd === "resume") {
-  
-  // 1. Trigger download of local resume in public folder
-  const localResumeUrl = "/MyCV-SujayKumarGiri.pdf"; // file in public folder
-  const link = document.createElement("a");
-  link.href = localResumeUrl;
-  link.setAttribute("download", "MyCV-SujayKumarGiri.pdf");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
+      // Show spinner
+      newEntries.push({ type: "custom", value: "spinner" });
+      setHistory(newEntries);
+      setInput("");
 
+      // Simulate delay & download
+      setTimeout(() => {
+        const link = document.createElement("a");
+        link.href = "/MyCV-SujayKumarGiri.pdf";
+        link.setAttribute("download", "MyCV-SujayKumarGiri.pdf");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        const message = `Resume downloaded successfully.
+If it doesn't download automatically or you want to see the resume in google drive, click here:
+https://drive.google.com/file/d/1dePe_wCNE-vjXpPpywFFmFyW2XW6GjNA/view?usp=sharing`;
+        // Replace spinner with success message
+        setHistory((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = {
+            type: "output",
+            value: message,
+            displayedOutput: parseTextWithLinks(message),
+            error: false,
+          };
+          return updated;
+        });
+      }, 3000);
+
+      return;
+    }
+    
     if (COMMANDS[cmd]) {
-      newEntries.push({ type: "output", value: COMMANDS[cmd], displayedOutput: [], error: false });
+      newEntries.push({
+        type: "output",
+        value: COMMANDS[cmd],
+        displayedOutput: [],
+        error: false,
+      });
     } else {
       newEntries.push({
         type: "output",
@@ -322,12 +364,23 @@ export default function Terminal() {
         }
         if (entry.type === "command") {
           return (
-            <pre key={idx} style={{ margin: 0, whiteSpace: "normal", fontSize }}>
+            <pre
+              key={idx}
+              style={{ margin: 0, whiteSpace: "normal", fontSize }}
+            >
               <span style={{ color: "#3b82f6" }}>sujay@developer:~$ </span>
               <span style={{ color: "#00FF00" }}>{entry.value}</span>
             </pre>
           );
         }
+        if (entry.type === "custom" && entry.value === "spinner") {
+          return (
+            <pre key={idx} style={{ color: "white" }}>
+              Downloading resume <UnicodeSpinner />
+            </pre>
+          );
+        }
+
         if (entry.type === "output") {
           if (entry.error) {
             return (
@@ -369,7 +422,10 @@ export default function Terminal() {
                         href={part.value}
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "#3b82f6", textDecoration: "underline" }}
+                        style={{
+                          color: "#46bcf7",
+                          textDecoration: "underline",
+                        }}
                       >
                         {part.value}
                       </a>
@@ -385,7 +441,12 @@ export default function Terminal() {
 
       <form
         onSubmit={handleSubmit}
-        style={{ display: "flex", alignItems: "center", whiteSpace: "nowrap", fontSize }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          whiteSpace: "nowrap",
+          fontSize,
+        }}
       >
         <span style={{ color: "#3b82f6" }}>sujay@developer:~$&nbsp;</span>
         <input
