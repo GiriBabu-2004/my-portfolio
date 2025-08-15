@@ -290,14 +290,14 @@ export default function Terminal() {
       // Simulate delay & download
       setTimeout(() => {
         const link = document.createElement("a");
-        link.href = "/MyCV-SujayKumarGiri.pdf";
-        link.setAttribute("download", "MyCV-SujayKumarGiri.pdf");
+        link.href = "/Sujay_Resume.pdf";
+        link.setAttribute("download", "Sujay_Resume.pdf");
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         const message = `Resume downloaded successfully.
 If it doesn't download automatically or you want to see the resume in google drive, click here:
-https://drive.google.com/file/d/1dePe_wCNE-vjXpPpywFFmFyW2XW6GjNA/view?usp=sharing`;
+https://drive.google.com/file/d/1N7oZeDY7dfh4_-GW8-DXT4zT7Khe-syy/view?usp=sharing`;
         // Replace spinner with success message
         setHistory((prev) => {
           const updated = [...prev];
